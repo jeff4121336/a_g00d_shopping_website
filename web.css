@@ -1,0 +1,22 @@
+h1 {    
+    font-size: 200%;
+    color: blue;
+}
+
+header { 
+    text-align: center;
+    background: lightblue;
+    font-size: 500%;
+    color: black;
+    padding: 10px 0px 10px 0px;
+}
+
+fc { /* footer */
+    
+    text-align: center;
+
+
+}
+body {
+    background: lightgrey;
+}
