@@ -8,10 +8,16 @@ header {
     background: lightblue;
     font-size: 500%;
     color: black;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 0px; /* top right bottom left*/
 }
-
 
 body {
     background: lightgrey;
+}
+
+.Thumbnail {
+    width: 10%;
+    /* add a marign -> separate photos */
+    margin: 10px 25px 10px 0px; 
+    display: inline-block; 
 }
