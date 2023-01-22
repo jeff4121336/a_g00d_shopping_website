@@ -5,19 +5,54 @@ h1 {
 
 header { 
     text-align: center;
-    background: lightblue;
+    background: aqua;
     font-size: 500%;
     color: black;
     padding: 10px 0px 10px 0px; /* top right bottom left*/
 }
 
+
 body {
-    background: lightgrey;
+    background: whitesmoke;
+}
+
+/* spacing for the floating bar */
+.links{
+    padding-top: 90px;
+}
+.floatingbar{
+    background-color: black;
+    color: white;
+    /*fixed at top*/
+    position: fixed; 
+    /* orginial position */
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 80px;
 }
 
 .Thumbnail {
-    width: 10%;
+    width: 175px;
     /* add a marign -> separate photos */
     margin: 10px 25px 10px 0px; 
     display: inline-block; 
+}
+
+.prodgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+/* 1fr - freespace, 1px, 1% */
+.div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.div1{
+    background-color: aqua;
+}
+
+.div2{
+    background-color: red;
 }
