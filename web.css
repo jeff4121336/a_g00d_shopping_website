@@ -30,8 +30,8 @@ body {
     background-color: lightgoldenrodyellow;
     color: black;
     /* setting its size and orginial position */
-    width: 150px;
-    height: 600px;
+    width: 15%;
+    height: 800px;
     vertical-align: top;
     /* perform a column properties */
     display: inline-block;
@@ -50,16 +50,26 @@ body {
 
 .ThumbnailCol {
     width: 80%;
-    left: 200px;
     display: inline-block; 
 }
+
+.HomePageThumbnail {
+    display: inline-block;
+    margin-left: 15%;
+    width: 20%;
+}
+
+/*  inline-block -> the top and bottom margins/paddings are respected; inline -> they are not. */
+.instructionwords{
+    display: inline-block;
+    vertical-align: top;
+    font-size: auto;
+    width: 40%;
+}
+
+
 /* 1fr - freespace, 1px, 1% */
 .prodshow {
     display: inline-block;
 }
 
-.HomePageThumbnail {
-    display: inline-block;
-    left: 500px;
-    width: 600px;
-}
