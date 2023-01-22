@@ -1,7 +1,3 @@
-h1 {    
-    font-size: 200%;
-    color: blue;
-}
 
 header { 
     text-align: center;
@@ -9,27 +5,40 @@ header {
     font-size: 500%;
     color: black;
     padding: 10px 0px 10px 0px; /* top right bottom left*/
+    display: block;
+    /* spacing for the floating bar */
+    padding-top: 90px;
 }
-
 
 body {
     background: whitesmoke;
 }
 
-/* spacing for the floating bar */
-.links{
-    padding-top: 90px;
-}
 .floatingbar{
     background-color: black;
     color: white;
-    /*fixed at top*/
+    /* fixed at top */
     position: fixed; 
     /* orginial position */
     top: 0px;
     left: 0px;
     right: 0px;
     height: 80px;
+}
+
+.CatagoriesBar{
+    background-color: lightgoldenrodyellow;
+    color: black;
+    /* setting its size and orginial position */
+    width: 150px;
+    height: 600px;
+    vertical-align: top;
+    /* perform a column properties */
+    display: inline-block;
+}
+
+.CatagoriesWord{
+    margin-bottom: 25px;
 }
 
 .Thumbnail {
@@ -39,20 +48,18 @@ body {
     display: inline-block; 
 }
 
-.prodgrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+.ThumbnailCol {
+    width: 80%;
+    left: 200px;
+    display: inline-block; 
 }
 /* 1fr - freespace, 1px, 1% */
-.div{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.prodshow {
+    display: inline-block;
 }
 
-.div1{
-    background-color: aqua;
-}
-
-.div2{
-    background-color: red;
+.HomePageThumbnail {
+    display: inline-block;
+    left: 500px;
+    width: 600px;
 }
