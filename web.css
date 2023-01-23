@@ -25,9 +25,15 @@ body {
     right: 0px;
     height: 80px;
 }
+
 .links{
     background-color: aquamarine;
 }
+
+#shid:hover{ /* not working */
+    background-color: brown;
+}
+
 .CatagoriesBar{
     background-color: blanchedalmond;
     color: black;
@@ -52,13 +58,19 @@ body {
     display: inline-block; 
 }
 
+
 .Thumbnail:hover{
 
 }
 
 .ThumbnailCol {
-    width: 75%;
+    width: 70%;
     display: inline-block; 
+}
+
+.ThumbnailLayout{
+    display: inline-block;
+    color: white;
 }
 
 .HomePageThumbnail {
@@ -77,7 +89,4 @@ body {
 
 
 /* 1fr - freespace, 1px, 1% */
-.prodshow {
-    width: 100%;
-}
 
