@@ -1,7 +1,7 @@
 
 header { 
     text-align: center;
-    background: aqua;
+    background: lightblue;
     font-size: 500%;
     color: black;
     padding: 10px 0px 10px 0px; /* top right bottom left*/
@@ -11,7 +11,7 @@ header {
 }
 
 body {
-    background: whitesmoke;
+    background: rgb(191, 243, 225);
 }
 
 .floatingbar{
@@ -25,12 +25,14 @@ body {
     right: 0px;
     height: 80px;
 }
-
+.links{
+    background-color: aquamarine;
+}
 .CatagoriesBar{
-    background-color: lightgoldenrodyellow;
+    background-color: blanchedalmond;
     color: black;
     /* setting its size and orginial position */
-    width: 15%;
+    width: 130px;
     height: 800px;
     vertical-align: top;
     /* perform a column properties */
@@ -39,17 +41,23 @@ body {
 
 .CatagoriesWord{
     margin-bottom: 25px;
+    list-style-type: circle;
 }
 
 .Thumbnail {
-    width: 175px;
+    width: 150px;
+    height: 150px;
     /* add a marign -> separate photos */
-    margin: 10px 25px 10px 0px; 
+    margin: 10px 20px 10px 0px; 
     display: inline-block; 
 }
 
+.Thumbnail:hover{
+
+}
+
 .ThumbnailCol {
-    width: 80%;
+    width: 75%;
     display: inline-block; 
 }
 
@@ -70,6 +78,6 @@ body {
 
 /* 1fr - freespace, 1px, 1% */
 .prodshow {
-    display: inline-block;
+    width: 100%;
 }
 
