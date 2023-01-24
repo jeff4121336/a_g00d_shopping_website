@@ -62,24 +62,22 @@ body {
     width: 150px;
     height: 150px;
     /* add a marign -> separate photos */
-    margin: 10px 20px 10px 0px; 
+    margin: 10px 0px 10px 0px; 
     display: inline-block; 
 }
 
 
-
-/* .[classname]:hover{
-
-} for shopping list expand*/
-
-.ThumbnailCol {
+.ThumbnailCol{
     width: 70%;
     display: inline-block; 
 }
 
 .ThumbnailLayout{
     display: inline-block;
+    background-color: whitesmoke;
     color: white;
+    font-size: 100%;
+    padding: 0px 10px 0px 10px;
 }
 
 .HomePageThumbnail {
@@ -95,4 +93,5 @@ body {
     font-size: auto;
     width: 40%;
 }
+
 /* 1fr - freespace, 1px, 1% */
