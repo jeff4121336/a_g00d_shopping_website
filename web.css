@@ -75,8 +75,9 @@ body {
 .ThumbnailLayout{
     display: inline-block;
     background-color: whitesmoke;
-    color: white;
+    color: black;
     font-size: 100%;
+    height: 250px;
     padding: 0px 10px 0px 10px;
 }
 
