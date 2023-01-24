@@ -1,1 +1,43 @@
 /* css that apply for detail infomation of the production only */
+.ProdInfoRow3 { /* sidebar - prodimg - prodinfo */
+    grid-template-columns: 130px 2fr 2fr;
+    display: grid;
+    width: 100%;
+    height: 600px
+}
+
+.CatagoriesBarInProd {
+    background-color: blanchedalmond;
+    color: black;
+    /* setting its size and orginial position */
+    width: 100%; /* 100% * 130 = 130px */
+    height: 600px;
+    vertical-align: top;
+    /* perform a column properties */
+    display: inline-block;
+}
+
+.ThumbnailInProd {
+    display: inline-block;
+    width: 100%;
+    height: 600px;
+    vertical-align: top;
+}
+
+.DetailProdinfo {
+    padding-left: 70px;
+    align-self: center;
+    font-size: 150%;
+    display: inline-block;
+}
+
+.AddToCartBtn{
+    width: 150px;
+    height: 70px;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+
+#ATCBwords{
+    padding: 20px 0px 0px 10px;
+}

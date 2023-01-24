@@ -12,6 +12,8 @@ header {
 
 body {
     background: rgb(191, 243, 225);
+    /* change the word-font to SF Pro in apple, avoid the layout problem cause by word font*/
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;    
 }
 
 .floatingbar{
@@ -36,6 +38,7 @@ body {
 
 .CatagoriesBar{
     background-color: blanchedalmond;
+
     color: black;
     /* setting its size and orginial position */
     width: 130px;
@@ -48,6 +51,11 @@ body {
 .CatagoriesWord{
     margin-bottom: 25px;
     list-style-type: circle;
+}
+
+#ulmodify{
+    padding-inline-start: 20px;
+    /* default 40 px */
 }
 
 .Thumbnail {
@@ -87,6 +95,4 @@ body {
     width: 40%;
 }
 
-
 /* 1fr - freespace, 1px, 1% */
-
