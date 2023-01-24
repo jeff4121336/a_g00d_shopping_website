@@ -67,9 +67,10 @@ body {
 }
 
 
-.Thumbnail:hover{
 
-}
+/* .[classname]:hover{
+
+} for shopping list expand*/
 
 .ThumbnailCol {
     width: 70%;
@@ -94,5 +95,4 @@ body {
     font-size: auto;
     width: 40%;
 }
-
 /* 1fr - freespace, 1px, 1% */

@@ -38,6 +38,10 @@
     border-radius: 10px;
 }
 
+.AddToCartBtn:hover{
+    background-color: grey;
+}
+
 #ATCBwords{
     padding: 20px 0px 0px 10px;
 }
