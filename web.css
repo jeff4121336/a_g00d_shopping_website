@@ -112,9 +112,18 @@ listtodisplay{
 }
 
 #checkoutlink{
-    text-align: right;
+    text-align:right;
 }
 
 listtodisplay.after{
-    background: white;
+    background:white;
+}
+
+#Quantityinput{
+    display: inline-block;
+    width: 24px;
+    font-size: 15px;
+    text-align: center;
+    color: red;
+    background-color: whitesmoke;
 }
