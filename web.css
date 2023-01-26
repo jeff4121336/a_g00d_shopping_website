@@ -13,21 +13,20 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;    
 }
 
-
 .links{
     background-color: aquamarine;
 }
 
 .CatagoriesBar{
     background-color: blanchedalmond;
-
     color: black;
     /* setting its size and orginial position */
     width: 130px;
-    height: 800px;
+    height: auto;
     vertical-align: top;
     /* perform a column properties */
     display: inline-block;
+    margin-top: 10px;
 }
 
 .CatagoriesWord{
@@ -126,4 +125,23 @@ listtodisplay.after{
     text-align: center;
     color: red;
     background-color: whitesmoke;
+}
+
+.AddToCartBtninCataPage{
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: lightgrey;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.AddToCartBtninCataPage:hover{
+    background-color: grey;
+    /* a duration of hover transition */
+    transition-duration: 1s;
+}
+
+#ATCBwords{
+    padding: 20px 0px 0px 10px;
 }

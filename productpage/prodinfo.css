@@ -40,10 +40,8 @@
 
 .AddToCartBtn:hover{
     background-color: grey;
-}
-
-#ATCBwords{
-    padding: 20px 0px 0px 10px;
+    /* a duration of hover transition */
+    transition-duration: 1s;
 }
 
 #onlyxleft{
