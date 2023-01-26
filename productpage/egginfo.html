@@ -10,9 +10,6 @@
 </head>
 
 <body>
-    <div class="floatingbar">
-        hi testing i am floatingbar.
-    </div>
 
     <div >
         <div> <!-- Row1 -->
@@ -23,9 +20,25 @@
             <nav>
                 <a href="../home.html"> Home Page</a> >
                 <a href="../Food.html">Catagory (Food) </a> > 
-                Eggs (You are Here!) |
+                Eggs (You are Here!) 
+                <div id="shoppinghoverbtn"> 
+                    Shopping List
+                    <listtodisplay>
+                    Shopping List Total $10
+                        <div>
+                            Apple [2] @$4
+                        </div>
+                        <div>
+                            Banana [2] @$3.5 
+                        </div>
+                        <div id="checkoutlink"> 
+                            <a href="checkout.html">
+                                [CheckOut]
+                            </a>
+                        </div>
+                    </listtodisplay>
+                </div>
             </nav>
-                <shoppinghover> Shopping List </shoppinghover> 
         </div>
 
         <div> <!-- Row3 -->
@@ -56,6 +69,7 @@
                     <div class="AddToCartBtn">
                         <p id="ATCBwords"> Add To Cart!</p>
                     </div>
+                    <p> Inventory: 15 </p>
                 </div>
         </div>
     </div>

@@ -45,3 +45,8 @@
 #ATCBwords{
     padding: 20px 0px 0px 10px;
 }
+
+#onlyxleft{
+    color: red;
+    font-style: bold;
+}

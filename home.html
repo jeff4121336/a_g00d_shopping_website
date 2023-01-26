@@ -9,10 +9,6 @@
 </head>
 
 <body>
-    <div class="floatingbar">
-        hi testing i am floatingbar.
-    </div>
-
     <div>
         <div> <!-- Row1 -->
             <header> Welcome to GoodShop! </header>
@@ -20,10 +16,26 @@
     
         <div class="links"> <!-- Row2 -->
             <nav>
-                Home Page (You are Here!) |
-                <a href="shoppingcart.html"> Shopping Cart</a>
+                Home Page (You are Here!)
+
+            <div id="shoppinghoverbtn"> 
+                Shopping List
+                <listtodisplay>
+                Shopping List Total $10
+                    <div>
+                        Apple [2] @$4
+                    </div>
+                    <div>
+                        Banana [2] @$3.5 
+                    </div>
+                    <div id="checkoutlink"> 
+                        <a href="checkout.html">
+                            [CheckOut]
+                        </a>
+                    </div>
+                </listtodisplay>
+            </div> <!-- higher priority -->
             </nav>
-            <shoppinghover> Shopping List </shoppinghover> 
         </div>
 
         <div class="prodshow"> <!-- Row3 -->
@@ -46,7 +58,6 @@
                 <img src="HomepageImg/shoppingcart.png">
             </div>
             <div class="instructionwords"> <!-- Row3 Column3 -->
-                We provides various type of products! You can find whatever you want at here!
                 Please search your desired products by the serach bar on the left.
             <div>
         </div>

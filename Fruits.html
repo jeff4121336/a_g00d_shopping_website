@@ -9,9 +9,6 @@
 </head>
 
 <body>
-    <div class="floatingbar">
-        hi testing i am floatingbar.
-    </div>
 
     <div>
         <div> <!-- Row1 -->
@@ -21,9 +18,25 @@
         <div class="links"> <!-- Row2 -->
             <nav>
                 <a href="home.html"> Home Page</a> >
-                Catagory (Fresh Fruits) (You are Here!) |
+                Catagory (Fresh Fruits) (You are Here!) 
+                <div id="shoppinghoverbtn"> 
+                    Shopping List
+                    <listtodisplay>
+                    Shopping List Total $10
+                        <div>
+                            Apple [2] @$4
+                        </div>
+                        <div>
+                            Banana [2] @$3.5 
+                        </div>
+                        <div id="checkoutlink"> 
+                            <a href="checkout.html">
+                                [CheckOut]
+                            </a>
+                        </div>
+                    </listtodisplay>
+                </div> <!-- higher priority -->
             </nav>
-            <shoppinghover> Shopping List </shoppinghover>  <!-- not working-->
         </div>
 
         <div> <!-- Row3 -->
@@ -143,7 +156,7 @@
                         </a>
                     </div>
                 <div>
-                    <a href="productpage/watinfo.html"> watermelon </a>
+                    <a href="productpage/watinfo.html"> Watermelon </a>
                 </div>
                 <div>
                     $ 55
