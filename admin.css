@@ -1,0 +1,20 @@
+.adminheader {
+    color: red;
+    font-size: 200%;
+    margin: 20px 0px 20px 0px; /* top right bottom left*/
+    text-align: center;
+}
+
+.container {
+    display: flex; /* flex-direction : default -> row ; cross-axis : column */
+    flex-basis: auto;
+    column-gap: 50px;
+}
+
+#FlexCol1 {
+    width: 50%;
+}
+
+#FlexCol2 {
+    width: 50%;
+}
