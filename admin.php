@@ -12,8 +12,8 @@
     <meta charset="UTF-8"> 
     <title>GoodShop</title>
 
-    <link rel="stylesheet" href=web.css type="text/css">
     <link rel="stylesheet" href=admin.css type="text/css">
+    <link rel="stylesheet" href=web.css type="text/css">
 </head>
 
 <body>
