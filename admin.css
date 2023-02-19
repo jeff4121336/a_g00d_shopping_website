@@ -1,3 +1,13 @@
+#drop_area {
+    width: 200px;
+    height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .adminheader {
     color: red;
     font-size: 200%;
@@ -18,3 +28,4 @@
 #FlexCol2 {
     width: 50%;
 }
+

@@ -9,6 +9,7 @@ if (empty($_REQUEST['action']) || !preg_match('/^\w+$/', $_REQUEST['action'])) {
 	exit();
 }
 
+//
 // The following calls the appropriate function based to the request parameter $_REQUEST['action'],
 //   (e.g. When $_REQUEST['action'] is 'cat_insert', the function ierg4210_cat_insert() is called)
 // the return values of the functions are then encoded in JSON format and used as output
