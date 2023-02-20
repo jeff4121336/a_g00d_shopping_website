@@ -54,9 +54,10 @@ function ierg4210_prod_insert() {
     if (!preg_match('/^[\d\.]+$/', $_POST['price']))
         throw new Exception("invalid-price");
     if (!preg_match('/^[\w\- ]+$/', $_POST['description']))
+        throw new Exception("invalid-description");
     // EDIT 
     if (!preg_match('/^[\d\.]+$/', $_POST['inventory']))
-    throw new Exception("invalid-inventory");
+        throw new Exception("invalid-inventory");
     // EDIT END
     
     $sql="INSERT INTO products (cid, name, price, description, inventory) VALUES (?, ?, ?, ?, ?)";
@@ -176,11 +177,57 @@ function ierg4210_prod_delete_by_cid(){
 }
 
 function ierg4210_prod_edit(){
+
     global $db;
     $db = ierg4210_DB();
 
+    if (!preg_match('/^\d*$/', $_POST['pid']))
+        throw new Exception("invalid-pid");
+    $_POST['pid'] = (int) $_POST['pid'];
+    if (!preg_match('/^[\w\- ]+$/', $_POST['name']))
+        throw new Exception("invalid-name");
+    if (!preg_match('/^[\d\.]+$/', $_POST['price']))
+        throw new Exception("invalid-price");
+    if (!preg_match('/^[\w\- ]+$/', $_POST['description']))
+        throw new Exception("invalid-description");
+    // EDIT 
+    if (!preg_match('/^[\d\.]+$/', $_POST['inventory']))
+        throw new Exception("invalid-inventory");
+    // EDIT END
     
+    $sql="UPDATE products SET name = ?, price = ?, description = ?, inventory = ? WHERE pid = ?";
+    $q = $db->prepare($sql);
+    
+    // Copy the uploaded file to a folder which can be publicly accessible at incl/img/[pid].jpg
+    if ($_FILES["file"]["error"] == 0
+    && $_FILES["file"]["type"] == ("image/jpeg" || "image/jpg" || "image/png" || "image/gif")
+    && mime_content_type($_FILES["file"]["tmp_name"]) == ("image/jpeg" || "image/jpg" || "image/png" || "image/gif")
+    && $_FILES["file"]["size"] < 5000000) {
+    
+    $pid = $_POST["pid"];
+    $name = $_POST["name"];
+    $price = $_POST["price"];
+    $inv = $_POST["inventory"];
+    $desc = $_POST["description"];
+    
+    $q->bindParam(1, $name);
+    $q->bindParam(2, $price);
+    $q->bindParam(3, $inv);
+    $q->bindParam(4, $desc);
+    $q->bindParam(5, $pid);
+    $q->execute();
+
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], "/var/www/html/IERG4210/lib/images/" . $pid . ".jpg")) {
+        // redirect back to original page; you may comment it during debug
+        header('Location: admin.php');
+        exit();
+    }   
+    }
+    header('Content-Type: text/html; charset=utf-8');
+    echo 'Invalid file detected. <br/><a href="javascript:history.back();">Back to admin panel.</a>';
+    exit();
 }
+
 function ierg4210_prod_delete(){
 
     global $db;
@@ -198,4 +245,9 @@ function ierg4210_prod_delete(){
 
     header('Location: admin.php');
     exit();
+}
+
+function ierg4210_catapage_generate {
+    
+
 }
