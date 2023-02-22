@@ -3,11 +3,9 @@ require '/var/www/html/IERG4210/lib/db.inc.php';
 $res = ierg4210_cat_fetchall();
 
 $products = '<ul>';
-
 foreach ($res as $value){
     $products .= '<li><a href = "'.$value["cid"].'"> '.$value["name"].'</a></li>';
 }
-
 $products .= '</ul>';
 ?>
 
@@ -54,18 +52,34 @@ $products .= '</ul>';
             <div class="CatagoriesBar"> <!-- Row4 Column1 -->
                 <?php
                     echo '<div id = "CatagoriesBar">
-                    <div id = "products">'.$products.'
+                    <div id = "CatagoriesWord">'.$products.'
                     </div>
                     </div>';
                 ?>
             </div>
-            <div class="HomePageThumbnail"> <!-- Row4 Column2 -->
-                <img src="HomepageImg/shoppingcart.png">
-            </div>
-            <div class="instructionwords"> <!-- Row4 Column3 -->
-                Please search your desired products by the serach bar on the left.
-            <div>
-        </div>
+        <div class="ThumbnailCol"> <!-- Row4 Column2 -->
+
+            <?php
+                $prod_res = ierg4210_prod_fetchOne();
+                foreach ($prod_res as $prod_elm) {
+                    $pid = $prod_elm['pid'];
+                    $cid = $prod_elm['cid'];
+                    $name = $prod_elm['name'];
+                    $price = $prod_elm['price'];
+	    ?>
+                <div class="ThumbnailLayout">
+                    <a href='details.php?itn=<?php echo htmlspecialchars($prod_name) ?>&cid=<?php echo htmlspecialchars($cid) ?>'>
+                        <img class="Thumbnail" src='lib/images<?php echo '/' . $pid.'.jpg'; ?>'>
+                    </a></br>
+		    <?php echo $name. "</br>$ ".$price; ?>
+		    <div class="AddToCartBtninCataPage">
+                        Add
+		    </div>
+	        </div>
+            <?php
+                }
+            ?>
+        </div>  
     </div>
 
     <div>
@@ -82,3 +96,4 @@ $products .= '</ul>';
 </body>
 
 </html>
+

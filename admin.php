@@ -27,6 +27,10 @@
         <header> Welcome to GoodShop! </header>
     </div>
 
+
+    <div class="links">
+        <a href="main.php">Home Page</a>
+    </div>
     <div class="adminheader">
         Admin Panel
     </div>
@@ -44,9 +48,9 @@
                 <label for="prod_name"> Name *</label>
                 <div> <input id="prod_name" type="text" name="name" required="required" pattern="^[\w-]+$"/></div>
                 <label for="prod_price"> Price * </label>
-                <div> <input id="prod_price" type="text" name="price" required="required"></div>
+                <div> <input id="prod_price" type="text" name="price" required="required" pattern="^[0-9\.]+$"/></div>
                 <label for="prod_inv"> Inventory * </label>
-                <div> <input id="prod_inv" type="text" name="inventory" required="required"/></div>
+                <div> <input id="prod_inv" type="text" name="inventory" required="required" pattern="^[0-9]+$"/></div>
                 <label for="prod_desc"> Description * </label>
                 <div> <input id="prod_desc" type="text" name="description"/> </div>
 
@@ -100,19 +104,19 @@
             <legend> Edit Product</legend>
             <form method="POST" action="admin-process.php?action=prod_edit" enctype="multipart/form-data">
 
-                <label for="prod_cid"> Product *</label>
-                <div> <select id="prod_cid" name="cid"><?php echo $poptions;?></select></div>
+                <label for="prod_pid"> Product *</label>
+                <div> <select id="prod_pid" name="pid" required="required"><?php echo $poptions;?></select></div>
                 <label for="prod_name"> New Name *</label>
                 <div> <input id="prod_name" type="text" name="name" required="required" pattern="^[\w-]+$"/></div>
                 <label for="prod_price"> New Price *</label>
-                <div> <input id="prod_price" type="text" name="price" required="required"></div>
+                <div> <input id="prod_price" type="text" name="price" required="required" pattern="^[0-9\.]+$"/></div>
                 <label for="prod_inv"> New Inventory *</label>
-                <div> <input id="prod_inv" type="text" name="inventory" required="required"/></div>
+                <div> <input id="prod_inv" type="text" name="inventory" required="required" pattern="^[0-9]+$"/></div>
                 <label for="prod_desc"> New Description *</label>
-                <div> <input id="prod_desc" type="text" name="description"/> </div>
+                <div> <input id="prod_desc" type="text" name="description" required="required"/> </div>
 
                 <label for="prod_image"> New Image *</label>
-                <div> <input type="file" name="file" required="true" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
+                <div> <input type="file" name="file" required="required" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
 		<div id="drop_area"> Select Or Drop Image Here...</div> 
 		<input type="submit" value="Submit"/>
             </form>

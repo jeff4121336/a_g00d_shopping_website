@@ -54,10 +54,9 @@ function ierg4210_prod_insert() {
     if (!preg_match('/^[\d\.]+$/', $_POST['price']))
         throw new Exception("invalid-price");
     if (!preg_match('/^[\w\- ]+$/', $_POST['description']))
-        throw new Exception("invalid-description");
     // EDIT 
     if (!preg_match('/^[\d\.]+$/', $_POST['inventory']))
-        throw new Exception("invalid-inventory");
+    throw new Exception("invalid-inventory");
     // EDIT END
     
     $sql="INSERT INTO products (cid, name, price, description, inventory) VALUES (?, ?, ?, ?, ?)";
@@ -72,14 +71,14 @@ function ierg4210_prod_insert() {
     $cid = $_POST["cid"];
     $name = $_POST["name"];
     $price = $_POST["price"];
-    $inv = $_POST["inventory"];
     $desc = $_POST["description"];
+    $inv = $_POST["inventory"];
     
     $q->bindParam(1, $cid);
     $q->bindParam(2, $name);
     $q->bindParam(3, $price);
-    $q->bindParam(4, $inv);
-    $q->bindParam(5, $desc);
+    $q->bindParam(4, $desc);
+    $q->bindParam(5, $inv);
     $q->execute();
     $lastId = $db->lastInsertId();
     
@@ -194,7 +193,6 @@ function ierg4210_prod_edit(){
     if (!preg_match('/^[\d\.]+$/', $_POST['inventory']))
         throw new Exception("invalid-inventory");
     // EDIT END
-    
     $sql="UPDATE products SET name = ?, price = ?, description = ?, inventory = ? WHERE pid = ?";
     $q = $db->prepare($sql);
     
@@ -202,7 +200,7 @@ function ierg4210_prod_edit(){
     if ($_FILES["file"]["error"] == 0
     && $_FILES["file"]["type"] == ("image/jpeg" || "image/jpg" || "image/png" || "image/gif")
     && mime_content_type($_FILES["file"]["tmp_name"]) == ("image/jpeg" || "image/jpg" || "image/png" || "image/gif")
-    && $_FILES["file"]["size"] < 5000000) {
+    && $_FILES["file"]["size"] < 50000000) {
     
     $pid = $_POST["pid"];
     $name = $_POST["name"];
@@ -212,8 +210,8 @@ function ierg4210_prod_edit(){
     
     $q->bindParam(1, $name);
     $q->bindParam(2, $price);
-    $q->bindParam(3, $inv);
-    $q->bindParam(4, $desc);
+    $q->bindParam(3, $desc);
+    $q->bindParam(4, $inv);
     $q->bindParam(5, $pid);
     $q->execute();
 
@@ -227,7 +225,6 @@ function ierg4210_prod_edit(){
     echo 'Invalid file detected. <br/><a href="javascript:history.back();">Back to admin panel.</a>';
     exit();
 }
-
 function ierg4210_prod_delete(){
 
     global $db;
@@ -238,6 +235,7 @@ function ierg4210_prod_delete(){
     $_POST['pid'] = (int) $_POST['pid'];
     $pid = $_POST["pid"];
 
+    
     $sql="DELETE FROM Products WHERE pid = ?";
     $q = $db->prepare($sql);
     $q->bindParam(1, $pid);
@@ -246,8 +244,4 @@ function ierg4210_prod_delete(){
     header('Location: admin.php');
     exit();
 }
-
-function ierg4210_catapage_generate {
-    
-
-}
+?>
