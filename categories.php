@@ -1,13 +1,17 @@
 <?php
-require '/var/www/html/IERG4210/lib/db.inc.php';
-$res = ierg4210_cat_fetchall();
+    require '/var/www/html/IERG4210/lib/db.inc.php';
+    $res = ierg4210_cat_fetchall();
+    $products = '<ul>';
+    foreach ($res as $value){
+        $products .= '<li><a href =categories.php?cid='.$value["cid"].'&name='.$value["name"].'>'.$value["name"].'</a></li>';
+    }
+    $products .= '</ul>';
 
-$products = '<ul>';
-foreach ($res as $value){
-    $products .= '<li><a href =categories.php?cid='.$value["cid"].'&name='.$value["name"].'>'.$value["name"].'</a></li>';
-}
-$products .= '</ul>';
+    $cid = $_GET['cid'];
+    $name = $_GET['name'];
+#    echo "CID: ".$cid." Name: ".$name;
 ?>
+
 
 <html lang="en">
 
@@ -28,7 +32,11 @@ $products .= '</ul>';
         </div>
     
         <div class="links"> <!-- Row3 -->
-                Home Page (You are Here!)
+            <nav>
+                <?php
+                        echo "<a href='main.php'>Home Page</a> > ".$name." (You Are Here!)";
+                ?>
+            </nav>
             <div id="shoppinghoverbtn"> 
                 Shopping List
                 <listtodisplay>
@@ -48,7 +56,7 @@ $products .= '</ul>';
             </div> <!-- higher priority -->
         </div>
 
-	<div class="prodshow"> <!-- Row4 -->
+        <div class="prodshow"> <!-- Row4 -->
             <div class="CatagoriesBar"> <!-- Row4 Column1 -->
                 <?php
                     echo '<div id = "CatagoriesBar">
@@ -56,31 +64,35 @@ $products .= '</ul>';
                     </div>
                     </div>';
                 ?>
-            </div> 
+            </div>
             <div class="ThumbnailCol"> <!-- Row4 Column2 -->
-
             <?php
                 $prod_res = ierg4210_prod_fetchall();
                 foreach ($prod_res as $prod_elm) {
-                    $pid = $prod_elm['pid'];
-                    $cid = $prod_elm['cid'];
-                    $name = $prod_elm['name'];
-                    $price = $prod_elm['price'];
-	        ?>
-                <div class="ThumbnailLayout">
-                    <a href='productpage/details.php?itn=<?php echo htmlspecialchars($pid) ?>&cid=<?php echo htmlspecialchars($cid) ?>'>
-                        <img class="Thumbnail" src='lib/images<?php echo '/' . $pid.'.jpg'; ?>'>
-                    </a></br>
-		    <?php echo $name. "</br>$ ".$price; ?>
-		    <div class="AddToCartBtninCataPage">
-                    Add
-		    </div>
-	        </div>
+                    if ($prod_elm['cid'] == $cid) {
+                        $pid = $prod_elm['pid'];
+                        $cid = $prod_elm['cid'];
+                        $name = $prod_elm['name'];
+                        $price = $prod_elm['price'];
+            ?>
+                        <div class="ThumbnailLayout">
+			<a href= <?php echo 'productpage/details.php?itn='.$pid.'&cid='.$cid ?>>
+			<img class="Thumbnail" src='lib/images<?php echo '/' . $pid.'.jpg'; ?>'>
+                        </a> </br>
+
+		                    <?php echo $name. "</br>$ ".$price; ?>
+		                    <div class="AddToCartBtninCataPage">
+                                Add
+		                    </div>
+	                    </div>
+            <?php
+                    }
+            ?>
             <?php
                 }
             ?>
-        </div>  
-    </div>
+            </div>  
+	</div>
 
     <div>
         <footer>
@@ -96,4 +108,3 @@ $products .= '</ul>';
 </body>
 
 </html>
-

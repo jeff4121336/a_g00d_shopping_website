@@ -3,14 +3,13 @@
     $res = ierg4210_cat_fetchall();
     $options = '';
     $poptions = '';
-    $pres = ierg4210_prod_fetchone();
+    $pres = ierg4210_prod_fetchall();
     foreach ($res as $value){
     $options .= '<option value="'.$value["cid"].'"> '.$value["name"].' </option>';
     }
     foreach ($pres as $value){	  
     $poptions .= '<option value="'.$value["pid"].'"> '.$value["name"].' </option>';
     }
-    echo date("l");
 ?>
 
 <html lang="en">
@@ -35,12 +34,12 @@
         Admin Panel
     </div>
 
-    <div class="container"> <!--  Flex box (2 columns 3 Forms)-->
+    <div class="container"> <!--  Flex box -->
 
         <div id="FlexCol1">
         <fieldset>
             <legend> New Product</legend>
-            <form id="prod_insert" method="POST" action="admin-process.php?action=prod_insert"
+            <form name="insertprod" id="prod_insert" method="POST" action="admin-process.php?action=prod_insert"
             enctype="multipart/form-data">
 
                 <label for="prod_cid"> Category * </label>
@@ -53,10 +52,9 @@
                 <div> <input id="prod_inv" type="text" name="inventory" required="required" pattern="^[0-9]+$"/></div>
                 <label for="prod_desc"> Description * </label>
                 <div> <input id="prod_desc" type="text" name="description"/> </div>
-
-                <label for="prod_image"> Image *</label>
-                <div> <input type="file" name="file" required="true" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
-		<div id="drop_area"> Select Or Drop Image Here...</div>	  
+                <label for="prod_image"> New Image </label>
+                <div> <input type="file"  name="file" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
+                <div class="drop_area" draggable="true"> Drop Image Here...</div>
 	<input type="submit" value="Submit"/>
            </form>
         </fieldset>
@@ -102,7 +100,7 @@
         <div id="FlexCol2">
             <fieldset>
             <legend> Edit Product</legend>
-            <form method="POST" action="admin-process.php?action=prod_edit" enctype="multipart/form-data">
+            <form name="editprod" method="POST" action="admin-process.php?action=prod_edit" enctype="multipart/form-data">
 
                 <label for="prod_pid"> Product *</label>
                 <div> <select id="prod_pid" name="pid" required="required"><?php echo $poptions;?></select></div>
@@ -115,9 +113,11 @@
                 <label for="prod_desc"> New Description *</label>
                 <div> <input id="prod_desc" type="text" name="description" required="required"/> </div>
 
-                <label for="prod_image"> New Image *</label>
-                <div> <input type="file" name="file" required="required" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
-		<div id="drop_area"> Select Or Drop Image Here...</div> 
+                <label for="prod_image"> New Image </label>
+		<div> <input type="file" name="file" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
+		<div class="drop_area" draggable="true"> 
+			Drop Image Here...
+		</div>
 		<input type="submit" value="Submit"/>
             </form>
             </fieldset>
@@ -157,6 +157,8 @@
             </div>
         </footer>
     </div>
+
+<script src=dragdrop.js type="text/javascript"></script>
 </body>
 
 </html>

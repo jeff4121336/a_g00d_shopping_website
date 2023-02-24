@@ -28,13 +28,14 @@ function ierg4210_cat_fetchall() {
         return $q->fetchAll();
 }
 
-function ierg4210_prod_fetchOne(){
+function ierg4210_prod_fetchall(){
     global $db;
     $db = ierg4210_DB();
     $q = $db->prepare("SELECT * FROM Products LIMIT 100;");
     if ($q->execute())
         return $q->fetchAll();
 }
+
 
 // Since this form will take file upload, we use the tranditional (simpler) rather than AJAX form submission.
 // Therefore, after handling the request (DB insert and file copy), this function then redirects back to admin.html
