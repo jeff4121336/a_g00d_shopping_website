@@ -47,8 +47,8 @@ body {
 }
 
 .Thumbnail {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     /* add a marign -> separate photos */
     margin: 10px 0px 10px 0px; 
     display: inline-block; 
@@ -87,16 +87,17 @@ body {
     display: block;
     margin-left: auto;
     margin-right: 0;
-    width: 180px;
+    width: 350px;
     height: 20px;
     background-color: lightblue;
-    border-radius: 15px;
+    /* border-radius: 16px; */
     color: black;
     text-align: center;
 }
 
 #shoppinghoverbtn:hover listtodisplay{
     display: block;
+    background-color: lightblue;
 }
 
 /*  position
@@ -117,8 +118,39 @@ listtodisplay{
     display: none;
 }
 
+#deleteone{
+    margin-left: auto;
+    margin-right: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 12px;
+    color: red;
+    text-align: center;
+}
+
+#btnlist {
+    display: inline-block;
+}
+#save{
+    margin-left: auto;
+    margin-right: 0;
+    width: 90px;
+    height: 20px;
+    border-radius: 15px;
+    color: red;
+    text-align: center;
+}
+#clearcart{
+    margin-left: auto;
+    margin-right: 0;
+    width: 90px;
+    height: 20px;
+    border-radius: 15px;
+    color: red;
+    text-align: center;
+}
 #checkoutlink{
-    text-align:right;
+    text-align: center;
 }
 
 listtodisplay.after{
@@ -127,10 +159,10 @@ listtodisplay.after{
 
 #Quantityinput{
     display: inline-block;
-    width: 24px;
-    font-size: 15px;
+    width: 32px;
+    font-size: 14px;
     text-align: center;
-    color: red;
+    color: black;
     background-color: whitesmoke;
 }
 
@@ -151,4 +183,17 @@ listtodisplay.after{
 
 #ATCBwords{
     padding: 20px 0px 0px 10px;
+}
+
+/*https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

@@ -37,18 +37,21 @@
                         echo "<a href='main.php'>Home Page</a> > ".$name." (You Are Here!)";
                 ?>
             </nav>
-            <div id="shoppinghoverbtn"> 
+            <div id="shoppinghoverbtn">
                 Shopping List
                 <listtodisplay>
-                    Shopping List Total $10
-                    <div>
-                        Apple [ <input id="Quantityinput"> </input> ] @$4
+                    <div id="cartinfo">
                     </div>
-                    <div>
-                        Banana [ <input id="Quantityinput"> </input> ] @$3.5 
+			</br>
+                    <div id="cartprice">
+                        Total $-
                     </div>
-                    <div id="checkoutlink"> 
-                        <a href="checkout.html">
+                    <div id="btnlist">
+                        <button id="save"> SAVE </button>
+                        <button id="clearcart"> CLEAR </button>
+		    </div>
+		    <div id="checkoutlink"> 
+                        <a href="checkout.php">
                             [CheckOut]
                         </a>
                     </div>
@@ -75,17 +78,19 @@
                         $name = $prod_elm['name'];
                         $price = $prod_elm['price'];
             ?>
-                        <div class="ThumbnailLayout">
-			<a href= <?php echo 'productpage/details.php?itn='.$pid.'&cid='.$cid ?>>
-			<img class="Thumbnail" src='lib/images<?php echo '/' . $pid.'.jpg'; ?>'>
-                        </a> </br>
 
-		                    <?php echo $name. "</br>$ ".$price; ?>
-		                    <div class="AddToCartBtninCataPage">
-                                Add
-		                    </div>
-	                    </div>
-            <?php
+                <div class="ThumbnailLayout">
+			<a href= <?php echo 'productpage/details.php?itn='.$pid.'&cid='.$cid ?>&name=<?php echo htmlspecialchars($name) ?>&price=<?php echo htmlspecialchars($price) ?>>
+			        <img class="Thumbnail" src='lib/images<?php echo '/' . $pid.'.jpg'; ?>'>
+                        </a> </br>
+		                <?php echo $name. "</br>$ ".$price; ?>
+				<div>	
+					<a href= <?php echo 'productpage/details.php?itn='.$pid.'&cid='.$cid ?>&name=<?php echo htmlspecialchars($name) ?>&price=<?php echo htmlspecialchars($price) ?>>
+                         	           Add
+					</a>
+				</div>
+		</div>
+	    <?php
                     }
             ?>
             <?php
@@ -104,7 +109,8 @@
             </div>
         </footer>
     </div>
-    <!-- <script src=“xxx.js" type="text/javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src=shopping.js type="text/javascript"> </script>
 </body>
 
 </html>

@@ -1,4 +1,3 @@
-<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -17,27 +16,13 @@
         
         <div class="links"> <!-- Row2 -->
             <a href="main.php"> Return to Home Page</a> 
-            <div id="shoppinghoverbtn"> 
-                Shopping List
-                <listtodisplay>
-                Shopping List Total $10
-                    <div>
-                        Apple [ <input id="Quantityinput"> </input> ] @$4
-                    </div>
-                    <div>
-                        Banana [ <input id="Quantityinput"> </input> ] @$3.5 
-                    </div>
-                    <div> 
-                        hi this is check out :3
-                    </div>
-                </listtodisplay>
-            </div>
         </div>
         <p> <!-- Row3 -->
             This is a Checkout page!
             Nothing now :3
         </p>
     </div>
+
     <div>
         <footer>
             <div>
@@ -48,6 +33,8 @@
             </div>
         </footer>
     </div>
-    <!-- <script src=“xxx.js" type="text/javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src=shopping.js type="text/javascript"> </script>
 </body>
 </html>
+
