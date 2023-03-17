@@ -22,6 +22,7 @@ $products .= '</ul>';
     <div>
         <div class = "adminlink"> <!-- Row1 -->
             <a href="admin.php"> Admin Panel </a>    
+            <a href="login.php"> Login </a>
         </div>
         <div> <!-- Row2 -->
             <header> Welcome to GoodShop! </header>
