@@ -1,3 +1,7 @@
+<?php
+    require '/var/www/html/IERG4210/auth-process.php'
+?>
+
 <html lang="en">
 
 <head>
@@ -11,9 +15,8 @@
     <div>
         <div class = "adminlink"> <!-- Row1 -->
             <a href="admin.php"> Admin Panel |</a>  
-            <a href="main.php">| Home Page |</a>  
-            <a href="login.php">| Login </a>
-        </div>
+            <a href="main.php">| Home Page </a>         
+	</div>
         <div> <!-- Row2 -->
             <header> Welcome to GoodShop! </header>
         </div>
@@ -21,11 +24,10 @@
             <fieldset>
             <legend> Login Form </legend>
             <form name="login" method="POST" action="auth-process.php?action=login" enctype="multipart/form-data">
-            
-            <div> <input id="email" type="email" name="email" required="required" pattern="^\w+( \w+)*$"/></div>
-            <label for="prod_name"> Email *</label>
-            <div> <input id="password" type="text" name="password" required="required" pattern="^\w+( \w+)*$"/></div>
-            <label for="prod_price"> Password *</label>
+            <label for="email"> Email *</label> 
+            <div> <input id="email" type="email" name="email" required="required" pattern="^[\w\-\/][\w\'\-\/\.]*@[\w\-]+(\.[\w\-]+)*(\.[\w]{2,6})$"/> </div>
+            <label for="password"> Password *</label>
+            <div> <input id="password" type="password" name="password" required="required" pattern="/^[\w][\!\@\#\$\%\^\&\*]*$/"/></div>
             </div>
                 
             <input type="submit" value="Submit"/>
