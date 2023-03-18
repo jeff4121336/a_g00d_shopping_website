@@ -1,6 +1,5 @@
 <?php
 include_once('lib/db.inc.php');
-
 header('Content-Type: application/json');
 
 // input validation

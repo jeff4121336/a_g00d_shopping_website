@@ -1,5 +1,5 @@
 <?php
-    require '/var/www/html/IERG4210/auth-process.php'
+    require '/var/www/html/IERG4210/lib/auth.php'
 ?>
 
 <html lang="en">
@@ -23,11 +23,11 @@
         <div>
             <fieldset>
             <legend> Login Form </legend>
-            <form name="login" method="POST" action="auth-process.php?action=login" enctype="multipart/form-data">
+            <form name="login" method="POST" action="auth-process.php?action=log_in" enctype="multipart/form-data">
             <label for="email"> Email *</label> 
-            <div> <input id="email" type="email" name="email" required="required" pattern="^[\w\-\/][\w\'\-\/\.]*@[\w\-]+(\.[\w\-]+)*(\.[\w]{2,6})$"/> </div>
+            <div> <input id="email" type="email" name="email" required="required"/> </div>
             <label for="password"> Password *</label>
-            <div> <input id="password" type="password" name="password" required="required" pattern="/^[\w][\!\@\#\$\%\^\&\*]*$/"/></div>
+            <div> <input id="password" type="password" name="password" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
             </div>
                 
             <input type="submit" value="Submit"/>

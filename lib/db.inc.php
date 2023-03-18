@@ -245,4 +245,39 @@ function ierg4210_prod_delete(){
     header('Location: admin.php');
     exit();
 }
+
+
+function ierg4210_account_set_up() {
+    global $db;
+    $db = ierg4210_DB();
+
+    if (empty($_POST['email']) || !preg_match("/^[\w=+\-\/][\w='+\-\/\.]*@[\w\-]+(\.[\w\-]+)*(\.[\w]{2,6})$/", $_POST['email']))
+        throw new Exception("Invaild or missing email");
+
+    if (empty($_POST['password']) || !preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$/", $_POST['password']))
+            throw new Exception("Invaild or missing password");
+    
+    $salt = random_bytes('10');
+    $hashed = hash_hmac('sha256', $_REQUEST['password'], $salt);
+
+    $sql="INSERT INTO USER (email, salt, hashedpassword , flag) VALUES (?, ?, ?, ?)";
+    $q = $db->prepare($sql);
+
+    $email = $_POST['email'];
+    if ($_POST['user'] == "admin")
+    	$flag = 1;
+    else 
+	$flag = 0;
+
+    echo $email." ".$salt." ".$hashed." ".$flag;
+    $q->bindParam(1, $email);
+    $q->bindParam(2, $salt);
+    $q->bindParam(3, $hashed);
+    $q->bindParam(4, $flag);
+
+    $q->execute();
+    
+    header('Location: main.php', true, 302);
+    exit();
+}
 ?>

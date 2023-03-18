@@ -1,5 +1,6 @@
 <?php
     require '/var/www/html/IERG4210/lib/db.inc.php';
+    require '/var/www/html/IERG4210/lib/auth.php';	
     $res = ierg4210_cat_fetchall();
     $options = '';
     $poptions = '';
@@ -143,6 +144,26 @@
                     <input type="submit" value="Submit" />
                 </form>
             </fieldset>
+
+
+            <fieldset>
+            <legend> Add User </legend>
+            <form name="login" method="POST" action="admin-process.php?action=account_set_up" enctype="multipart/form-data">
+
+                <label for="email"> Email *</label>
+                <div> <input id="email" type="email" name="email" required="required"/> </div>
+                <label for="password"> Password (8-16 with Lower/Uppercase and numbers only)*</label>
+                <div> <input id="password" type="password" name="password" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
+		
+		<label for="user"> Account Type *</label>
+		<div>
+                <input type="radio" name="user" value="admin" required="required"/> Admin
+                <input type="radio" name="user" value="NormalUser"/> Normal User
+                </div>
+
+                <input type="submit" value="Submit"/>
+            </form>
+	    </fieldset>
 
         </div>
     </div>
