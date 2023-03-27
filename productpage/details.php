@@ -44,7 +44,7 @@
         <div class = "links"> <!-- Row2 -->
             <nav>
                 <?php echo '<a href="../main.php">Home Page</a> >' ?>
-                <?php echo '<a href="../categories.php?cid='.$cid.'&name='.$catname.'">'.$catname.'</a> > '.$name.' (You are here!)'; ?>
+                <?php echo '<a href="../categories.php?cid='.htmlspecialchars($cid).'&name='.htmlspecialchars($catname).'">'.htmlspecialchars($catname).'</a> > '.htmlspecialchars($name).' (You are here!)'; ?>
             </nav>
            <div id="shoppinghoverbtn">
 		Shopping List
@@ -78,17 +78,17 @@
                 ?>
                 </div>
                 <div> <!-- Row3 Column2 product img -->
-                    <img class="ThumbnailInProd" src='../lib/images<?php echo '/' .htmlspecialchars($itn).'.jpg'; ?>'>
+                    <img class="ThumbnailInProd" src='../lib/images<?php echo '/' . $itn.'.jpg'; ?>'>
                 </div>
 
                 <div class="DetailProdinfo"> <!-- Row3 Column3 product info -->
                 <?php
-                    echo "<p>Product: ".htmlspecialchars($name)."</p> <p>Price: $".htmlspecialchars($price)."</p> <p>Inventory: ".htmlspecialchars($inventory)."</p> <p>Description: ".htmlspecialchars($description)."</p>";
+                    echo "<p>Product: ".htmlspecialchars($name)."</p> <p>Price: $".$price."</p> <p>Inventory: ".$inventory."</p> <p>Description: ".$description."</p>";
                 
              
                 if ($inventory <= 3)
                     {
-                            echo "<p id='onlyxleft'> Only ".htmlspecialchars($inventory)." left!!!</p>";
+                            echo "<p id='onlyxleft'> Only ".$inventory." left!!!</p>";
                     } ?>
                 
 		<button id="addtocart" type="button">Add To Cart</button>

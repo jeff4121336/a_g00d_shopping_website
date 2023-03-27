@@ -1,6 +1,7 @@
 <?php
 include_once('lib/auth.php');
 include_once('lib/nonce.php');
+
 header('Content-Type: application/json');
 
 // input validation
@@ -19,6 +20,7 @@ try {
 			error_log(print_r($db->errorInfo(), true));
 		echo json_encode(array('failed'=>'1'));
 	}
+
 	csrt_verifyNonce($_REQUEST['action'], $_POST['nonce']);
 	echo 'while(1);' . json_encode(array('success' => $returnVal));
 } catch(PDOException $e) {

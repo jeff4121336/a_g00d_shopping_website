@@ -27,12 +27,24 @@
             <label for="email"> Email *</label> 
             <div> <input id="email" type="email" name="email" required="required"/> </div>
             <label for="password"> Password *</label>
+	    <div> <input id="password" type="password" name="password" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
+	    <input type="submit" value="Submit"/>
+	    </form>
+	    </fieldset>
+
+            <fieldset>
+            <legend> Change Password </legend>
+            <form name="login" method="POST" action="auth-process.php?action=log_in" enctype="multipart/form-data">
+            <label for="email"> Email *</label>
+            <div> <input id="email" type="email" name="email" required="required"/> </div>
+            <label for="password"> Old Password *</label>
             <div> <input id="password" type="password" name="password" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
-            </div>
-                
+            <label for="password"> New Password *</label>
+            <div> <input id="password" type="password" name="password" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
             <input type="submit" value="Submit"/>
             </form>
             </fieldset>
+
         </div>
     </div>
 

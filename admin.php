@@ -1,6 +1,7 @@
 <?php
     require '/var/www/html/IERG4210/lib/db.inc.php';
-    require '/var/www/html/IERG4210/lib/auth.php';	
+    require '/var/www/html/IERG4210/lib/auth.php';
+    require '/var/www/html/IERG4210/lib/nonce.php';
     $res = ierg4210_cat_fetchall();
     $options = '';
     $poptions = '';
@@ -8,7 +9,7 @@
     foreach ($res as $value){
     $options .= '<option value="'.$value["cid"].'"> '.$value["name"].' </option>';
     }
-    foreach ($pres as $value){	  
+    foreach ($pres as $value){
     $poptions .= '<option value="'.$value["pid"].'"> '.$value["name"].' </option>';
     }
 ?>
@@ -40,7 +41,7 @@
         <div id="FlexCol1">
         <fieldset>
             <legend> New Product</legend>
-            <form name="insertprod" id="prod_insert" method="POST" action="admin-process.php?action=prod_insert"
+            <form name="insertprod" id="prod_insert" method="POST" action="admin-process.php?action=<?php echo ($action = 'prod_insert'); ?>"
             enctype="multipart/form-data">
 
                 <label for="prod_cid"> Category * </label>
@@ -56,34 +57,40 @@
                 <label for="prod_image"> New Image </label>
                 <div> <input type="file"  name="file" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
                 <div class="drop_area" draggable="true"> Drop Image Here...</div>
-	<input type="submit" value="Submit"/>
+                <input type="submit" value="Submit"/>
+                <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+
            </form>
         </fieldset>
 
         <fieldset>
                 <legend>New Catagories</legend>
-                <form method="POST" action="admin-process.php?action=cat_insert" enctype="multipart/form-data">
+                <form method="POST" action="admin-process.php?action=<?php echo ($action = 'cat_insert') ?>" enctype="multipart/form-data">
                         <label for="prod_name"> Name *</label>
                         <div> <input id="prod_name" type="text" name="name" required="required" pattern="^\w+( \w+)*$"/></div>
 
                      <input type="submit" value="Submit" />
+                    <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+
                 </form>
         </fieldset>
 
         <fieldset>
                 <legend>Delete Catagories</legend>
-                <form method="POST" action="admin-process.php?action=cat_delete" enctype="multipart/form-data">
+                <form method="POST" action="admin-process.php?action=<?php echo ($action = 'cat_delete'); ?>" enctype="multipart/form-data">
 
                     <label for="prod_cat">Delete Category *</label>
                     <div> <select id="prod_cat" name="cid"><?php echo $options; ?></select></div>
 
                     <input type="submit" value="Submit" />
+                    <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+
                 </form>
         </fieldset>
 
         <fieldset>
             <legend>Edit Catagories</legend>
-                <form method="POST" action="admin-process.php?action=cat_edit" enctype="multipart/form-data">
+                <form method="POST" action="admin-process.php?action=<?php echo ($action = 'cat_edit'); ?>" enctype="multipart/form-data">
 
                     <label for="prod_cat">Edit Category *</label>
                     <div> <select id="prod_cat" name="cid"><?php echo $options; ?></select></div>
@@ -93,6 +100,8 @@
                         <input id="catnewname" name="name" type="text" required="required" pattern="^\w+( \w+)*$"></select>
                     </div>
                     <input type="submit" value="Submit" />
+                    <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+                    
                 </form>
         </fieldset>
 
@@ -101,7 +110,7 @@
         <div id="FlexCol2">
             <fieldset>
             <legend> Edit Product</legend>
-            <form name="editprod" method="POST" action="admin-process.php?action=prod_edit" enctype="multipart/form-data">
+            <form name="editprod" method="POST" action="admin-process.php?action=<?php echo ($action = 'prod_edit'); ?>" enctype="multipart/form-data">
 
                 <label for="prod_pid"> Product *</label>
                 <div> <select id="prod_pid" name="pid" required="required"><?php echo $poptions;?></select></div>
@@ -115,55 +124,64 @@
                 <div> <input id="prod_desc" type="text" name="description" required="required" pattern="^\w+( \w+)*$"/> </div>
 
                 <label for="prod_image"> New Image </label>
-		<div> <input type="file" name="file" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
-		<div class="drop_area" draggable="true"> 
-			Drop Image Here...
-		</div>
-		<input type="submit" value="Submit"/>
+                <div> <input type="file" name="file" accept="image/jpeg, image/jpg, image/png, image/gif"/> </div>
+                <div class="drop_area" draggable="true"> 
+                        Drop Image Here...
+                </div>
+                <input type="submit" value="Submit"/>
+                <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+                
             </form>
             </fieldset>
 
             <fieldset>
                 <legend>Delete ALL Products by CID</legend>
-                <form method="POST" action="admin-process.php?action=prod_delete_by_cid" enctype="multipart/form-data">
+                <form method="POST" action="admin-process.php?action=<?php echo ($action = 'prod_delete_by_cid'); ?>" enctype="multipart/form-data">
 
                     <label for="prod_cid">Delete Products by CID *</label>
                     <div> <select id="prod_cid" name="cid"><?php echo $options; ?></select></div>
 
                     <input type="submit" value="Submit" />
+                    <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+
                 </form>
             </fieldset>
 
             <fieldset>
                 <legend>Delete Products </legend>
-                <form method="POST" action="admin-process.php?action=prod_delete" enctype="multipart/form-data">
+                <form method="POST" action="admin-process.php?action=<?php echo ($action = 'prod_delete'); ?>" enctype="multipart/form-data">
 
                     <label for="prod_id">Delete Products *</label>
                     <div> <select id="prod_id" name="pid"><?php echo $poptions; ?></select></div>
 
                     <input type="submit" value="Submit" />
+                    <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+
+
                 </form>
             </fieldset>
-
-
+                
             <fieldset>
             <legend> Add User </legend>
-            <form name="login" method="POST" action="admin-process.php?action=account_set_up" enctype="multipart/form-data">
+            <form name="login" method="POST" action="admin-process.php?action=<?php echo ($action = 'account_set_up'); ?>" " enctype="multipart/form-data">
 
                 <label for="email"> Email *</label>
                 <div> <input id="email" type="email" name="email" required="required"/> </div>
                 <label for="password"> Password (8-16 with Lower/Uppercase and numbers only)*</label>
                 <div> <input id="password" type="password" name="password" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
-		
-		<label for="user"> Account Type *</label>
-		<div>
+
+                <label for="user"> Account Type *</label>
+                <div>
                 <input type="radio" name="user" value="admin" required="required"/> Admin
                 <input type="radio" name="user" value="NormalUser"/> Normal User
                 </div>
 
                 <input type="submit" value="Submit"/>
+                <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+
+                
             </form>
-	    </fieldset>
+            </fieldset>
 
         </div>
     </div>
@@ -183,4 +201,3 @@
 </body>
 
 </html>
-                                     
