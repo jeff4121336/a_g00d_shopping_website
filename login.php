@@ -1,7 +1,28 @@
 <?php
-    require '/var/www/html/IERG4210/lib/auth.php'
-    require '/var/www/html/IERG4210/lib/db.inc.php'
-    require '/var/www/html/IERG4210/lib/nonce.php';
+    require '/var/www/html/IERG4210/lib/auth.php';
+
+if(isset($_POST['AdminPanel'])) {
+        if (ierg4210_auth()) {
+                header('Location: admin.php');
+        }
+}
+
+if(isset($_POST['Login'])) {
+    header('Location: login.php');
+    exit();
+}
+
+if(isset($_POST['Logout'])){
+        header('Location: login.php');
+	ierg4210_log_out();
+	exit();
+}
+
+if(isset($_POST['Guest'])){
+	header('Location: main.php');
+	session_regenerate_id();
+	exit();
+}
 ?>
 
 <html lang="en">
@@ -15,37 +36,39 @@
 
 <body>
     <div>
-        <div class = "adminlink"> <!-- Row1 -->
-            <a href="admin.php"> Admin Panel |</a>  
-            <a href="main.php">| Home Page </a>         
-	</div>
+        <form method="post">
+            <input type="submit" name="AdminPanel" value="AdminPanel"/>
+            <input type="submit" name="Login" value="Login"/>
+	    <input type="submit" name="Logout" value="Logout"/>
+	</form>
         <div> <!-- Row2 -->
             <header> Welcome to GoodShop! </header>
         </div>
         <div>
             <fieldset>
             <legend> Login Form </legend>
-            <form name="login" method="POST" action="auth-process.php?action=<?php echo ($action = 'log_in'); ?>" enctype="multipart/form-data">
+            <form name="login" method="POST" action="auth-process.php?action=log_in" enctype="multipart/form-data">
             <label for="email"> Email *</label> 
             <div> <input id="email" type="email" name="email" required="required"/> </div>
             <label for="password"> Password *</label>
 	    <div> <input id="password" type="password" name="password" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
 	    <input type="submit" value="Submit"/>
-        <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
+	    </form>
+	    <form method="post">
+		<input type="submit" name="Guest" value="Login as Guest"/>
 	    </form>
 	    </fieldset>
 
             <fieldset>
             <legend> Change Password </legend>
-            <form name="login" method="POST" action="admin-process.php?action=<?php echo ($action = 'change_pw'); ?>" enctype="multipart/form-data">
+            <form name="login" method="POST" action="auth-process.php?action=change_pw" enctype="multipart/form-data">
             <label for="email"> Email *</label>
             <div> <input id="email" type="email" name="email" required="required"/> </div>
             <label for="password"> Old Password *</label>
             <div> <input id="password" type="password" name="password" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
             <label for="password"> New Password *</label>
-            <div> <input id="password" type="password" name="newpassword" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
+            <div> <input id="newpassword" type="password" name="newpassword" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$"/></div>
             <input type="submit" value="Submit"/>
-            <input type="hidden" name="nonce" value="<?php echo csrf_getNonce($action); ?>" />
             </form>
             </fieldset>
 

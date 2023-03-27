@@ -1,6 +1,6 @@
 <?php
 include_once('db.inc.php');
-
+session_start();
 function ierg4210_log_in() {
     if (empty($_POST['email']) || !preg_match("/^[\w=+\-\/][\w='+\-\/\.]*@[\w\-]+(\.[\w\-]+)*(\.[\w]{2,6})$/", $_POST['email']))
         throw new Exception("Invaild or missing email");
@@ -29,9 +29,10 @@ function ierg4210_log_in() {
               setcookie('auth', json_encode($token), $exp, '', '', true, true);
               $_SESSION['auth'] = $token;
 	      if ($r['flag'] == "1")
-	      	    $admin_login_success = true;
+	      	$admin_login_success = true;
 	      if ($r['flag'] == "0")
                 $user_login_success = true;	
+	session_regenerate_id();
 	 }
     } 
    
@@ -39,52 +40,50 @@ function ierg4210_log_in() {
         header('Location: admin.php', true, 302);
         exit();
     } else if ($user_login_success) {	   
-	    header('Location: main.php', true, 302);
+	header('Location: main.php', true, 302);
         exit();
     } else {
-        throw new Exception("This account is not exist!");
+	header('Content-Type: text/html; charset=utf-8');
+        echo 'This account does not exist. / Wrong Credentals. <br/><a href="javascript:history.back();">Back to login page.</a>';
+        exit();
+       // throw new Exception("This account is not exist!");
     }
 }
 
 function ierg4210_log_out() {
     // choose cookies for login section here
-
-    header('Location: login.php', true, 302);
+    setcookie('auth', "", time() - 3600);
+    session_destroy();
     exit();
 }
 
+
 function ierg4210_auth() {
-    if (!empty($_SESSION['auth']))
-        return $_SESSION['auth']['em'];
-    if (!empty($_COOKIE['auth'])) {
+    if ((!empty($_COOKIE['auth'])) &&  (!empty($_SESSION['auth']))) {
         //stripslashes() returns a string with backslashes stripped off 
         // (\' becomes ' and so on.)
         if ($token = json_decode(stripslashes($_COOKIE['auth']), true)) {
-            if (time() > $token['exp'])
-                return false;
+            if (time() > $token['exp']) {
+	        header('Content-Type: text/html; charset=utf-8');
+        	echo 'No permission for admin panel. <br/><a href="javascript:history.back();">Back to pervious page.</a>';
+	    }
+
             global $db;
             $db = ierg4210_DB();
-            $q=$db->prepare('SELECT * FROM USER WHERE email = ?'); 
+            $q=$db->prepare('SELECT * FROM USER WHERE email = ?');
             $q->execute(array($token['em']));
             if ($r = $q->fetch()) {
                 $verifypwd = hash_hmac('sha256', $token['exp'].$r['hashedpassword'], $r['salt']);
-                if ($verifypwd == $token['exp']) {
-                    $_SESSION['auth'] = $token;
-                        if ($r['flag'] == "1") {
-                            header('Location: admin.php', true, 302);
-                            exit();
-                        }
-                        if ($r['flag'] == "0") { 
-                            header('Location: main.php', true, 302);    
-                            exit();
-                        }
-                    //return $token['em']           
+                if ($verifypwd == $token['k']) {
+                    $_SESSION['auth'] = $_COOKIE['auth'];
+                    if ($r['flag'] == "1") {
+			    return 1;
+		    }
                 }
             }
         }
     }
-    header('Location: main.php', true, 302);
-    return false;
+        header('Content-Type: text/html; charset=utf-8');
+        echo 'No permission for admin panel. <br/><a href="javascript:history.back();">Back to pervious page.</a>'; 
+       exit();
 }
-
-?>

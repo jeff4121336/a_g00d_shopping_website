@@ -1,4 +1,6 @@
 <?php
+include_once('auth.php');
+
 function ierg4210_DB() {
         // connect to the database
         // TODO: change the following path if needed
@@ -18,7 +20,6 @@ function ierg4210_DB() {
 
         return $db;
 }
-
 function ierg4210_cat_fetchall() {
     // DB manipulation
     global $db;
@@ -281,41 +282,43 @@ function ierg4210_account_set_up() {
     exit();
 }
 
-    function ierg4210_change_pw() {
+function ierg4210_change_pw() {
         global $db;
         $db = ierg4210_DB();
-        $q=$db->prepare('SELECT * FROM USER WHERE email = ?'); 
+        $q=$db->prepare('SELECT * FROM USER WHERE email = ?');
         $q->execute(array($_POST['email']));
         if ($r = $q->fetch()) {
             $saltedpwd = hash_hmac('sha256', $_POST['password'], $r['salt']);
             if ($saltedpwd == $r["hashedpassword"]) {
                 $newpwd = $_POST['newpassword'];
-                $testforsamepw = hash_hmac('sha256', $newpwd, $r['salt']);
+	        $testforsamepw = hash_hmac('sha256', $newpwd, $r['salt']);
                 if ($testforsamepw == $saltedpwd) { // Same pw
                     header('Content-Type: text/html; charset=utf-8');
-                    echo 'Your new password can not be the same as before! <br/><a href="javascript:history.back();">Back to login pages.</a>';
-                    exit();
+		    echo 'Wrong/Repeat Credentials, fail to change password. <br/><a href="javascript:history.back();">Back to login page.</a>';
+		    exit();
                 }
-                //Insert new pw
+		//Insert here
                 $newsalt = random_bytes('10');
-                $hashednewpwd = hash_hmac('sha256', $newpwd, $salt);
+                $hashednewpwd = hash_hmac('sha256', $newpwd, $newsalt);
                 $sql= "UPDATE USER SET salt = ?, hashedpassword = ? WHERE email = ?";
                 $q = $db->prepare($sql);
-            
+
                 $email = $_POST['email'];
-            
+
                 $q->bindParam(1, $newsalt);
                 $q->bindParam(2, $hashednewpwd);
                 $q->bindParam(3, $email);
                 $q->execute();
+
                 header('Content-Type: text/html; charset=utf-8');
                 echo 'Sucessfully changed your password! <br/><a href="javascript:history.back();">Back to login page and login with new credentials.</a>';
-                exit();
-            }
+		ierg4210_log_out();
+	    	exit();
+	    }
         }
 
         header('Content-Type: text/html; charset=utf-8');
-        echo 'Wrong Credentials, fail to change password. <br/><a href="javascript:history.back();">Back to login page.</a>';
+        echo 'Wrong/Repeat Credentials, fail to change password. <br/><a href="javascript:history.back();">Back to login page.</a>';
         exit();
-    }
+}
 ?>

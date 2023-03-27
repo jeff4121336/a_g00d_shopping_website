@@ -1,12 +1,30 @@
 <?php
-require '/var/www/html/IERG4210/lib/db.inc.php';
+require '/var/www/html/IERG4210/lib/auth.php';
 $res = ierg4210_cat_fetchall();
-//echo count($res);
+
 $products = '<ul>';
 foreach ($res as $value){
     $products .= '<li><a href =categories.php?cid='.$value["cid"].'&name='.$value["name"].'>'.$value["name"].'</a></li>';
 }
 $products .= '</ul>';
+
+if(isset($_POST['AdminPanel'])) {
+	if (ierg4210_auth()) {
+		header('Location: admin.php');
+	}
+}
+
+if(isset($_POST['Login'])) {
+    header('Location: login.php');
+    exit();
+}
+
+if(isset($_POST['Logout'])){
+        header('Location: login.php');
+	ierg4210_log_out();
+	exit();
+}
+
 ?>
 
 <html lang="en">
@@ -20,10 +38,11 @@ $products .= '</ul>';
 
 <body>
     <div>
-        <div class = "adminlink"> <!-- Row1 -->
-	    <a href="admin.php"> Admin | </a>
-		<a href="login.php"> Login </a>
-        </div>
+        <form method="post">
+            <input type="submit" name="AdminPanel" value="AdminPanel"/>
+            <input type="submit" name="Login" value="Login"/>
+            <input type="submit" name="Logout" value="Logout"/>
+	</form>
         <div> <!-- Row2 -->
             <header> Welcome to GoodShop! </header>
         </div>

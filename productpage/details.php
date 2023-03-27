@@ -1,5 +1,5 @@
 <?php
-    require '/var/www/html/IERG4210/lib/db.inc.php';
+    require '/var/www/html/IERG4210/lib/auth.php';
     $res = ierg4210_cat_fetchall();
 
     $cid = $_GET['cid'];
@@ -23,7 +23,22 @@
         $description = $prod_elm['description'];
         }
     }
-?> 
+if(isset($_POST['AdminPanel'])) {
+        if (ierg4210_auth()) {
+                header('Location:  ../admin.php');
+        }
+}
+    
+if(isset($_POST['Login'])) {
+    header('Location: ../login.php');
+    exit();
+}
+if(isset($_POST['Logout'])){
+        header('Location: ../login.php');
+        ierg4210_log_out();
+        exit();
+}
+?>
 
 <html lang="en">
 
@@ -37,14 +52,19 @@
 
 <body>
     <div>
-        <div> <!-- Row1 -->
+        <form method="post">
+            <input type="submit" name="AdminPanel" value="AdminPanel"/>
+            <input type="submit" name="Login" value="Login"/>
+	    <input type="submit" name="Logout" value="Logout"/>	
+	</form>
+	<div> <!-- Row1 -->
             <header> Welcome to GoodShop! </header>
         </div>
 
         <div class = "links"> <!-- Row2 -->
             <nav>
                 <?php echo '<a href="../main.php">Home Page</a> >' ?>
-                <?php echo '<a href="../categories.php?cid='.htmlspecialchars($cid).'&name='.htmlspecialchars($catname).'">'.htmlspecialchars($catname).'</a> > '.htmlspecialchars($name).' (You are here!)'; ?>
+                <?php echo '<a href="../categories.php?cid='.$cid.'&name='.$catname.'">'.$catname.'</a> > '.$name.' (You are here!)'; ?>
             </nav>
            <div id="shoppinghoverbtn">
 		Shopping List
@@ -78,17 +98,17 @@
                 ?>
                 </div>
                 <div> <!-- Row3 Column2 product img -->
-                    <img class="ThumbnailInProd" src='../lib/images<?php echo '/' . $itn.'.jpg'; ?>'>
+                    <img class="ThumbnailInProd" src='../lib/images<?php echo '/' .htmlspecialchars($itn).'.jpg'; ?>'>
                 </div>
 
                 <div class="DetailProdinfo"> <!-- Row3 Column3 product info -->
                 <?php
-                    echo "<p>Product: ".htmlspecialchars($name)."</p> <p>Price: $".$price."</p> <p>Inventory: ".$inventory."</p> <p>Description: ".$description."</p>";
+                    echo "<p>Product: ".htmlspecialchars($name)."</p> <p>Price: $".htmlspecialchars($price)."</p> <p>Inventory: ".htmlspecialchars($inventory)."</p> <p>Description: ".htmlspecialchars($description)."</p>";
                 
              
                 if ($inventory <= 3)
                     {
-                            echo "<p id='onlyxleft'> Only ".$inventory." left!!!</p>";
+                            echo "<p id='onlyxleft'> Only ".htmlspecialchars($inventory)." left!!!</p>";
                     } ?>
                 
 		<button id="addtocart" type="button">Add To Cart</button>

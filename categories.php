@@ -1,5 +1,5 @@
 <?php
-    require '/var/www/html/IERG4210/lib/db.inc.php';
+    require '/var/www/html/IERG4210/lib/auth.php';
     $res = ierg4210_cat_fetchall();
     $products = '<ul>';
     foreach ($res as $value){
@@ -9,7 +9,22 @@
 
     $cid = $_GET['cid'];
     $name = $_GET['name'];
-#    echo "CID: ".$cid." Name: ".$name;
+
+if(isset($_POST['AdminPanel'])) {
+    header('Location: admin.php');
+    exit();
+}
+if(isset($_POST['Login'])) {
+    header('Location: login.php');
+    exit();
+}
+
+if(isset($_POST['Logout'])){
+        header('Location: login.php');
+        ierg4210_log_out();
+        exit();
+}	
+   
 ?>
 
 
@@ -23,11 +38,12 @@
 </head>
 
 <body>
-    <div>
-        <div class = "adminlink"> <!-- Row1 -->
-            <a href="admin.php"> Admin Panel </a>    
-        </div>
-        <div> <!-- Row2 -->
+        <form method="post">
+            <input type="submit" name="AdminPanel" value="AdminPanel"/>
+            <input type="submit" name="Login" value="Login"/>
+            <input type="submit" name="Logout" value="Logout"/>
+	</form>
+	 <div> <!-- Row2 -->
             <header> Welcome to GoodShop! </header>
         </div>
     

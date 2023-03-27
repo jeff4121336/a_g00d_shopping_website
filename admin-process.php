@@ -1,7 +1,11 @@
 <?php
 include_once('lib/db.inc.php');
 include_once('lib/nonce.php');
+include_once('lib/auth.php');
 header('Content-Type: application/json');
+
+// vaildation of admin
+
 
 // input validation
 if (empty($_REQUEST['action']) || !preg_match('/^\w+$/', $_REQUEST['action'])) {
