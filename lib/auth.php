@@ -87,3 +87,29 @@ function ierg4210_auth() {
         echo 'No permission for admin panel. <br/><a href="javascript:history.back();">Back to pervious page.</a>'; 
        exit();
 }
+
+function ierg4210_getuser() {
+
+    if ((!empty($_COOKIE['auth'])) &&  (!empty($_SESSION['auth']))) {
+        //stripslashes() returns a string with backslashes stripped off 
+        // (\' becomes ' and so on.)
+        if ($token = json_decode(stripslashes($_COOKIE['auth']), true)) {
+            if (time() > $token['exp']) {
+	    	return "Guest";
+	    }
+
+            global $db;
+            $db = ierg4210_DB();
+            $q=$db->prepare('SELECT * FROM USER WHERE email = ?');
+            $q->execute(array($token['em']));
+            if ($r = $q->fetch()) {
+                $verifypwd = hash_hmac('sha256', $token['exp'].$r['hashedpassword'], $r['salt']);
+                if ($verifypwd == $token['k']) {
+                    $_SESSION['auth'] = $_COOKIE['auth'];
+                            return $token['em'];
+                }
+            }
+        }
+    }
+	return "Guest"; 
+}

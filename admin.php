@@ -12,6 +12,27 @@
     foreach ($pres as $value){
     $poptions .= '<option value="'.$value["pid"].'"> '.$value["name"].' </option>';
     }
+if(isset($_POST['AdminPanel'])) {
+        if (ierg4210_auth()) {
+                header('Location: admin.php');
+        }
+}
+
+if(isset($_POST['Login'])) {
+    header('Location: login.php');
+    exit();
+}
+
+if(isset($_POST['Logout'])){
+        header('Location: login.php');
+        ierg4210_log_out();
+        exit();
+}
+
+if(!ierg4210_auth()) {	
+	header('Loction: login.php');
+}
+
 ?>
 
 
@@ -25,6 +46,16 @@
 </head>
 
 <body>
+        <form method="post">
+            <input type="submit" name="AdminPanel" value="AdminPanel"/>
+            <input type="submit" name="Login" value="Login"/>
+            <input type="submit" name="Logout" value="Logout"/>
+        </form>
+        <?php
+                $username = ierg4210_getuser();
+                echo ' User: '.$username;
+        ?>
+
     <div>
         <header> Welcome to GoodShop! </header>
     </div>

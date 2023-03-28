@@ -1,5 +1,5 @@
 <?php
-include_once('auth.php');
+//include_once('auth.php');
 
 function ierg4210_DB() {
         // connect to the database

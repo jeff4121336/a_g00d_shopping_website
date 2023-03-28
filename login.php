@@ -20,6 +20,7 @@ if(isset($_POST['Logout'])){
 
 if(isset($_POST['Guest'])){
 	header('Location: main.php');
+	ierg4210_log_out();
 	session_regenerate_id();
 	exit();
 }
@@ -41,7 +42,12 @@ if(isset($_POST['Guest'])){
             <input type="submit" name="Login" value="Login"/>
 	    <input type="submit" name="Logout" value="Logout"/>
 	</form>
-        <div> <!-- Row2 -->
+        <?php
+                $username = ierg4210_getuser();
+                echo ' User: '.$username;
+        ?>
+        
+	<div> <!-- Row2 -->
             <header> Welcome to GoodShop! </header>
         </div>
         <div>

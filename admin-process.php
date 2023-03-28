@@ -5,7 +5,10 @@ include_once('lib/auth.php');
 header('Content-Type: application/json');
 
 // vaildation of admin
-
+if (!ierg4210_auth()) {
+	echo "Invaild account for admin permission";
+	exit();	
+}
 
 // input validation
 if (empty($_REQUEST['action']) || !preg_match('/^\w+$/', $_REQUEST['action'])) {
