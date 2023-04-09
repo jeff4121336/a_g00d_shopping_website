@@ -321,4 +321,5 @@ function ierg4210_change_pw() {
         echo 'Wrong/Repeat Credentials, fail to change password. <br/><a href="javascript:history.back();">Back to login page.</a>';
         exit();
 }
+
 ?>

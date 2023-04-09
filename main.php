@@ -1,5 +1,6 @@
 <?php
 require '/var/www/html/IERG4210/lib/auth.php';
+
 $res = ierg4210_cat_fetchall();
 
 $products = '<ul>';
@@ -67,10 +68,9 @@ if(isset($_POST['Logout'])){
                         <button id="clearcart"> CLEAR </button>
                     </div>
 		  
-		    <div id="checkoutlink"> 
-                        <a href="checkout.php">
-                            [CheckOut]
-                        </a>
+		    <div id="checkoutlink">
+			</br> 
+			<?php include_once('payment.php') ?>     
                     </div>
                     </listtodisplay>
              </div> <!-- higher priority -->

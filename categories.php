@@ -72,10 +72,8 @@ if(isset($_POST['Logout'])){
                         <button id="clearcart"> CLEAR </button>
 		    </div>
 		    <div id="checkoutlink"> 
-                        <a href="checkout.php">
-                            [CheckOut]
-                        </a>
-                    </div>
+                        </br>
+                        <?php include_once('payment.php') ?> </div>
                     </listtodisplay>
             </div> <!-- higher priority -->
         </div>
