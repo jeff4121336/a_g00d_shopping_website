@@ -8,7 +8,7 @@
 
 <body>
   <!-- Include the PayPal JavaScript SDK; replace "test" with your own sandbox Business account app client ID -->
-	<script src="https://www.paypal.com/sdk/js?client-id=<?php echo json_decode(file_get_contents("/var/www/html/IERG4210/productpage/secret.json"))->client_id; ?>"></script>
+	<script src="https://www.paypal.com/sdk/js?client-id=<?php echo json_decode(file_get_contents("/var/www/html/IERG4210/productpage/secret.json"))->client_id; ?>&currency=HKD"></script>
 <script> <?php include_once("/var/www/html/IERG4210/cart.js") ?> </script>
 
   <!-- Set up a container element for the button -->
@@ -54,8 +54,9 @@ const save_order = currentDomain + "/IERG4210/save_order.php";
               body: JSON.stringify(orderData, null, 2)
             });
 
-            clearCart(); // Clear the web shop cart
-            window.location.href = "payment.php"; // Redirect to another page
+	    clearCart(); // Clear the web shop cart
+	    alert("Your order has been approved! Thank you!");
+            window.location.href = "https://secure.s43.ierg4210.ie.cuhk.edu.hk/IERG4210/main.php"; // Redirect to another page
           });
       },
     }).render('#paypal-button-container');

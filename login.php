@@ -49,7 +49,10 @@ if(isset($_POST['Guest'])){
         
 	<div> <!-- Row2 -->
             <header> Welcome to GoodShop! </header>
-        </div>
+	</div>
+	<div>
+	    <a href="main.php"> Access Main Page with current user </a>
+	</div>
         <div>
             <fieldset>
             <legend> Login Form </legend>

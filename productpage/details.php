@@ -69,9 +69,10 @@ if(isset($_POST['Logout'])){
         <div class = "links"> <!-- Row2 -->
             <nav>
                 <?php echo '<a href="../main.php">Home Page</a> >' ?>
-                <?php echo '<a href="../categories.php?cid='.$cid.'&name='.$catname.'">'.$catname.'</a> > '.$name.' (You are here!)'; ?>
-            </nav>
-           <div id="shoppinghoverbtn">
+                <?php echo '<a href="../categories.php?cid='.$cid.'&name='.$catname.'">'.$catname.'</a> > '.$name.' (You are here!) | '; ?>  
+     		<a href="../memberinfo.php"> Member Panel </a>
+	   </nav>
+	   <div id="shoppinghoverbtn">
 		Shopping List
 		<listtodisplay>
 		    <div id="cartinfo">

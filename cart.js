@@ -30,10 +30,6 @@ function clearCart() {
   /* @TODO Your Implementation Here. */
   /* ========== REGION START ========== */
   localStorage.clear();
-//  updatelist();
   updatesum();
-
-  header('Location: main.php');
-  exit();
   /* ========== REGION END ========== */ 
 }

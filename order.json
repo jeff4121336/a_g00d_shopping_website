@@ -1,0 +1,113 @@
+{
+    "id": "9D918138D2831544R",
+    "intent": "CAPTURE",
+    "status": "COMPLETED",
+    "purchase_units": [
+        {
+            "reference_id": "default",
+            "amount": {
+                "currency_code": "HKD",
+                "value": "84.50",
+                "breakdown": {
+                    "item_total": {
+                        "currency_code": "HKD",
+                        "value": "84.50"
+                    },
+                    "shipping": {
+                        "currency_code": "HKD",
+                        "value": "0.00"
+                    },
+                    "handling": {
+                        "currency_code": "HKD",
+                        "value": "0.00"
+                    },
+                    "insurance": {
+                        "currency_code": "HKD",
+                        "value": "0.00"
+                    },
+                    "shipping_discount": {
+                        "currency_code": "HKD",
+                        "value": "0.00"
+                    }
+                }
+            },
+            "payee": {
+                "email_address": "sb-gvrxa25430276@business.example.com",
+                "merchant_id": "CV3LEV793R6MC"
+            },
+            "description": "Apple",
+            "custom_id": "66b494388f174479575c03b1eb52fe9a589dd2ae0bb1bc8de55b3672c0c65a51",
+            "invoice_id": "fe9ba0be-9945-27e6-0883-03e30fa82c90",
+            "soft_descriptor": "PAYPAL *TEST STORE",
+            "items": [
+                {
+                    "name": "Apple",
+                    "unit_amount": {
+                        "currency_code": "HKD",
+                        "value": "6.50"
+                    },
+                    "tax": {
+                        "currency_code": "HKD",
+                        "value": "0.00"
+                    },
+                    "quantity": "13"
+                }
+            ],
+            "shipping": {
+                "name": {
+                    "full_name": "Doe John"
+                },
+                "address": {
+                    "address_line_1": "71566176 Sky E137 S",
+                    "admin_area_2": "Posta",
+                    "admin_area_1": "Libisia",
+                    "postal_code": "W185744",
+                    "country_code": "HK"
+                }
+            },
+            "payments": {
+                "captures": [
+                    {
+                        "id": "8SS04744HE041182E",
+                        "status": "COMPLETED",
+                        "amount": {
+                            "currency_code": "HKD",
+                            "value": "84.50"
+                        },
+                        "final_capture": true,
+                        "seller_protection": {
+                            "status": "ELIGIBLE",
+                            "dispute_categories": [
+                                "ITEM_NOT_RECEIVED",
+                                "UNAUTHORIZED_TRANSACTION"
+                            ]
+                        },
+                        "invoice_id": "fe9ba0be-9945-27e6-0883-03e30fa82c90",
+                        "create_time": "2023-04-10T08:31:41Z",
+                        "update_time": "2023-04-10T08:31:41Z"
+                    }
+                ]
+            }
+        }
+    ],
+    "payer": {
+        "name": {
+            "given_name": "John",
+            "surname": "Doe"
+        },
+        "email_address": "sb-zwceg25430275@personal.example.com",
+        "payer_id": "NZ89TCWFFPFQC",
+        "address": {
+            "country_code": "HK"
+        }
+    },
+    "create_time": "2023-04-10T08:31:23Z",
+    "update_time": "2023-04-10T08:31:41Z",
+    "links": [
+        {
+            "href": "https:\/\/api.sandbox.paypal.com\/v2\/checkout\/orders\/9D918138D2831544R",
+            "rel": "self",
+            "method": "GET"
+        }
+    ]
+}

@@ -20,11 +20,11 @@ function create_order($cart)
     "purchase_units": [
       {
         "amount": {
-          "currency_code": "USD",
+          "currency_code": "HKD",
           "value": 5,
           "breakdown": {
             "item_total": {
-              "currency_code": "USD",
+              "currency_code": "HKD",
               "value": 5
             }
           }
@@ -44,7 +44,7 @@ HEREA;
     {
       "name": "1:ProductA",
       "unit_amount": {
-        "currency_code": "USD",
+        "currency_code": "HKD",
         "value": 1
       },
       "quantity": 1

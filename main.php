@@ -53,7 +53,8 @@ if(isset($_POST['Logout'])){
         </div>
     
         <div class="links"> <!-- Row3 -->
-                Home Page (You are Here!)
+                Home Page (You are Here!) |
+		<a href="memberinfo.php"> Member Panel </a> 
 	     <div id="shoppinghoverbtn">
                 Shopping List
                 <listtodisplay>

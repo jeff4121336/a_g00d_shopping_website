@@ -63,6 +63,7 @@ if(!ierg4210_auth()) {
 
     <div class="links">
         <a href="main.php">Home Page</a>
+   	<a href="admininfo.php"> Order Details </a>
     </div>
     <div class="adminheader">
         Admin Panel

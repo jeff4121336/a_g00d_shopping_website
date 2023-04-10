@@ -55,8 +55,9 @@ if(isset($_POST['Logout'])){
         <div class="links"> <!-- Row3 -->
             <nav>
                 <?php
-                        echo "<a href='main.php'>Home Page</a> > ".$name." (You Are Here!)";
-                ?>
+                        echo "<a href='main.php'>Home Page</a> > ".$name." (You Are Here!) | ";
+		?>
+     <a href="memberinfo.php"> Member Panel </a>
             </nav>
             <div id="shoppinghoverbtn">
                 Shopping List

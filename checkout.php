@@ -5,7 +5,6 @@
     <title>GoodShop</title>
 
     <link rel="stylesheet" href=web.css type="text/css">
-    <link rel="stylesheet" href=../prodinfo.css type="text/css">
 </head>
 
 <body>
@@ -18,9 +17,8 @@
             <a href="main.php"> Return to Home Page</a> 
         </div>
         <p> <!-- Row3 -->
-            This is a Checkout page!
-            Nothing now :3
-        </p>
+            Your order has been approved.
+	</p>
     </div>
 
     <div>
