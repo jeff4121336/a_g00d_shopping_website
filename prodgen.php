@@ -1,4 +1,5 @@
 <?php
+//add comment
 require '/var/www/html/IERG4210/lib/db.inc.php';
 $res = ierg4210_cat_fetchall();
 

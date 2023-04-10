@@ -1,4 +1,4 @@
-/* css that apply for detail infomation of the production only */
+/* css that apply for detail infomation of the production only. */
 .ProdInfoRow3 { /* sidebar - prodimg - prodinfo */
     grid-template-columns: 130px 2fr 2fr;
     display: grid;

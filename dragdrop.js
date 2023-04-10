@@ -1,3 +1,4 @@
+// failed
 const drop_area = document.querySelectorAll(".drop_area");
 
 for (i = 0; i < drop_area.length; i++) { /* drop_area is an array (QuerySelectorAll) */

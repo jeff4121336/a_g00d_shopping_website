@@ -1,4 +1,5 @@
 <?php
+//add comment
 include_once('lib/db.inc.php');
 include_once('lib/nonce.php');
 include_once('lib/auth.php');
